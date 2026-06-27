@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#061b10" />
+  <title>Chaman Garden — Thank You</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body { min-height: 100svh; display: grid; place-items: center; background: linear-gradient(rgba(6,27,16,.72), rgba(6,27,16,.9)), url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; }
+    .thanks-card { width: min(720px, calc(100% - 28px)); padding: clamp(30px, 6vw, 64px); text-align: center; border-radius: 38px; background: rgba(255,253,245,.13); border: 1px solid rgba(255,255,255,.24); backdrop-filter: blur(26px); color: #fffdf5; box-shadow: 0 36px 110px rgba(0,0,0,.28); }
+    .thanks-card img { width: 90px; height: 90px; border-radius: 999px; object-fit: cover; margin: 0 auto 24px; background: #fffdf5; }
+    .thanks-card h1 { margin: 0; font-size: clamp(2.2rem, 7vw, 4.2rem); line-height: .98; letter-spacing: -.06em; }
+    .thanks-card p { max-width: 560px; margin: 20px auto 30px; color: rgba(255,253,245,.78); line-height: 1.75; font-size: 1.05rem; }
+    .thanks-langs { display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; }
+    .thanks-langs button { border: 1px solid rgba(255,255,255,.22); color: #fffdf5; background: rgba(255,255,255,.06); border-radius: 999px; padding: 9px 12px; cursor: pointer; font-weight: 900; }
+    .thanks-langs button.active { background: #e7ff8e; color: #061b10; }
+  </style>
+</head>
+<body>
+  <main class="thanks-card reveal in-view">
+    <img src="assets/chaman-garden-logo.png" alt="Chaman Garden logo" />
+    <div class="thanks-langs" aria-label="Language switcher">
+      <button type="button" data-lang="ru">RU</button>
+      <button type="button" data-lang="uz">UZ</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <h1 data-i18n="thankTitle">Спасибо за заявку!</h1>
+    <p data-i18n="thankText">Chaman Garden получил вашу заявку. Мы скоро свяжемся с вами, чтобы уточнить детали ухода за растениями.</p>
+    <a href="index.html" class="btn btn-primary" data-i18n="thankBtn">Вернуться на главную</a>
+  </main>
+  <script src="script.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang') || localStorage.getItem('chaman-modern-lang') || 'ru';
+    if (typeof applyLanguage === 'function') applyLanguage(lang);
+  </script>
+</body>
+</html>
